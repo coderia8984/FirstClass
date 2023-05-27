@@ -38,7 +38,7 @@ export const MainLogoLoginBox = styled.div`
 
   width: 1000px;
   height: 50px;
-  border: 1px solid white;
+  /* border: 1px solid white; */
 `;
 
 // 3. Main 문구
@@ -56,7 +56,7 @@ export const MainPhrase = styled.div`
 export const MainConditionBox = styled(FlexCenter)`
   width: 1000px;
   height: 100px;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   gap: 5px;
 `
 

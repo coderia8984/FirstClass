@@ -10,11 +10,13 @@ import {
   MainSearchBtn,
   LoginOutBtn
 } from "../styles/style";
+import Logo from '../styles/icons/Skyscanner_Logo_LockupHorizontal_SkyBlue_RGB.svg'
 
 function Main() {
   return (
     <MainHeaderBack>
       <MainLogoLoginBox>
+        <img src={Logo}></img>
         <LoginOutBtn>로그인</LoginOutBtn>
       </MainLogoLoginBox>
       <MainPhrase>즐겨 찾는 여행 사이트를 빠르고 쉽게 검색하세요</MainPhrase>
