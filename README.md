@@ -19,6 +19,7 @@
 - Frontend : 윤진영, 박단이
 
 # 5. 프로젝트 사용 Package
+- styled-components
 - react-router-dom 
 - axios
 - react-query
@@ -27,3 +28,8 @@
 
 
 # 6. 담당 기능
+- 레이아웃 : 단이님
+- 레이아웃 & css/html : 진영님
+- Main Page 
+    * 출발, 도착지 셀렉트 박스 : 단이님
+    * 가는 날짜 캘린더 선택 : 단이님
