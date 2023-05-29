@@ -2,6 +2,7 @@ import React from "react";
 import * as style from "../styles/style";
 import { ReactComponent as LeftArrow } from "../styles/icons/left-arrow.svg";
 import { ReactComponent as RightArrow } from "../styles/icons/right-arrow.svg";
+import DetailFlight from "../components/DetailFlight";
 
 function Detail() {
   return (
@@ -30,6 +31,14 @@ function Detail() {
           </style.DetailDateBox>
         </style.DetailHeader>
       </style.DetailHeaderContainer>
+      <style.DetailFlightContainer>
+            <DetailFlight>
+
+            </DetailFlight>
+            <DetailFlight>
+                
+            </DetailFlight>
+        </style.DetailFlightContainer>
     </>
   );
 }

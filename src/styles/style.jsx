@@ -140,7 +140,7 @@ export const DetailUserBox = styled(FlexCenterColumn)`
   height: 100%;
 
   border: 1px solid white;
-`
+`;
 
 // 4. 사용자 검색조건 box -> 출발지 & 도착지
 export const DetailDepartArriv = styled.div`
@@ -149,7 +149,7 @@ export const DetailDepartArriv = styled.div`
   border: 1px solid white;
   font-size: 15px;
   color: white;
-`
+`;
 
 // 5. 사용자 검색조건 box -> 인원 & 등급
 export const DetailNumClass = styled.div`
@@ -157,7 +157,7 @@ export const DetailNumClass = styled.div`
   height: 50%;
   border: 1px solid white;
   color: white;
-`
+`;
 
 // 6. 날짜 선택 box
 export const DetailDateBox = styled(FlexCenter)`
@@ -166,4 +166,51 @@ export const DetailDateBox = styled(FlexCenter)`
 
   border: 1px solid white;
   color: white;
+`;
+
+// 7. 항공편 container
+export const DetailFlightContainer = styled(FlexCenterColumn)`
+  width: 800px;
+  border: 1px solid red;
+  padding: 10px;
+  gap: 12px;
+`;
+
+// 8. 항공편 Box
+export const DetailFlightBox = styled(FlexCenter)`
+  margin: 0 auto;
+  width: 100%;
+  height: 80px;
+`;
+
+// 9. 항공편 시간&코드 Box
+export const DetailFlightTimeBox = styled(FlexCenter)`
+  width: 70%;
+  height: 100%;
+  border: 1px solid gray;
+`
+
+// 9. 항공편 가격&선택하기 Box
+export const DetailPriceSelectBox = styled.div`
+  width: 30%;
+  height: 100%;
+  border: 1px solid gray;
+`
+
+// 10. 항공편 시간
+export const DetailTime = styled(FlexCenterColumn)`
+  width: 30%;
+  border: 1px solid gray;
+`
+
+// 11. 항공편 이동 시간
+export const DetailTravelTime = styled.div`
+  width: 40%;
+`
+
+// 12. 항공편 이동 시간 div
+export const DetailTravleDiv = styled.div`
+  width: 90%;
+  height: 50%;
+  border-bottom: 1px solid gray
 `
