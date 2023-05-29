@@ -108,7 +108,7 @@ export const CalendarModalContainer = styled.div`
 `
 
 // 6. 인원수 박스
-export const MainPersonNumber = styled(FlexCenter)`
+export const MainPersonNumber = styled(FlexCenterColumn)`
   width: 200px;
   height: 40px;
   border: 1px solid white;
