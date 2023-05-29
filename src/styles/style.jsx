@@ -88,12 +88,24 @@ export const MainSelect = styled.select`
 `;
 
 // 5. 캘린더
-export const MainCalendar = styled.div`
+export const MainCalendar = styled.button`
   width: 200px;
   height: 40px;
   border: 1px solid white;
   background-color: white;
 `;
+
+// 5-1. 캘린더 모달
+export const CalendarModalContainer = styled.div`
+  margin: 600px 100px 0px 0px;
+  
+  width: 500px;
+  height: 500px;
+  z-index: 2;
+  background-color: gray;
+  border: 1px solid black;
+  border-radius: 8px;
+`
 
 // 6. 인원수 박스
 export const MainPersonNumber = styled(FlexCenter)`
