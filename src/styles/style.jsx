@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // 공통 레이아웃
 // 1. flexbox, 가운데 정렬
@@ -26,7 +26,7 @@ export const HeaderContainer = styled(FlexCenterColumn)`
   height: 70px;
   background-color: ${(props) => props.backgroundColor};
 
-  padding: 10px 0px;
+  padding: 20px 0px;
 `;
 
 // 2. login, Logo Box
@@ -37,7 +37,7 @@ export const HeaderLogoLoginBox = styled.div`
   padding: 0px;
   /* margin-bottom: 50px; */
 
-  width: 1000px;
+  width: 1080px;
   height: 50px;
   /* border: 1px solid white; */
 `;
@@ -46,6 +46,8 @@ export const HeaderLogoLoginBox = styled.div`
 export const LoginOutBtn = styled.button`
   width: 150px;
   height: 40px;
+  font-weight: 700;
+  font-size: 16px;
 
   border: 1px solid #05203c;
   background-color: #05203c;
@@ -65,64 +67,88 @@ export const MainHeaderBack = styled(FlexCenterColumn)`
 export const MainPhrase = styled.div`
   width: 1000px;
   height: 50px;
-  margin: 70px 0px 30px 0px;
+
   /* border: 1px solid white; */
 
   color: white;
   font-size: 35px;
+  font-weight: 700;
 `;
 
 // 3. 검색 조건 container
 export const MainConditionBox = styled(FlexCenter)`
-  width: 1000px;
+  width: 2000px;
   height: 100px;
   /* border: 1px solid white; */
   gap: 5px;
 `;
 
 // 4. 셀렉트 박스
-export const MainSelect = styled.select`
+export const MainSelectDeparture = styled.select`
   width: 200px;
-  height: 40px;
+  height: 60px;
   border: 1px solid white;
+  border-radius: 0.75rem 0 0 0.75rem;
+  font-weight: 700;
+  font-size: 14px;
+  color: #545860;
+`;
+export const MainSelectArrival = styled.select`
+  width: 200px;
+  height: 60px;
+  border: 1px solid white;
+
+  font-weight: 700;
+  font-size: 14px;
+  color: #545860;
 `;
 
 // 5. 캘린더
 export const MainCalendar = styled.button`
   width: 200px;
-  height: 40px;
+  height: 60px;
   border: 1px solid white;
   background-color: white;
+  font-size: 14px;
+  font-weight: 700;
+  color: #545860;
 `;
 
 // 5-1. 캘린더 모달
 export const CalendarModalContainer = styled.div`
   margin: 600px 100px 0px 0px;
-  
+
   width: 500px;
   height: 500px;
   z-index: 2;
   background-color: gray;
   border: 1px solid black;
   border-radius: 8px;
-`
+`;
 
 // 6. 인원수 박스
 export const MainPersonNumber = styled(FlexCenterColumn)`
   width: 200px;
-  height: 40px;
+  height: 60px;
   border: 1px solid white;
   background-color: white;
+  border-radius: 0 0.75rem 0.75rem 0;
+  font-weight: 700;
+  font-size: 14px;
+  color: #545860;
 `;
 
 // 7. 검색하기 버튼
 export const MainSearchBtn = styled.button`
   width: 150px;
-  height: 40px;
+  height: 60px;
   margin-left: 30px;
   border: 1px solid #0062e3;
   background-color: #0062e3;
   color: white;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 18px;
   cursor: pointer;
 `;
 
@@ -200,29 +226,29 @@ export const DetailFlightTimeBox = styled(FlexCenter)`
   width: 70%;
   height: 100%;
   border: 1px solid gray;
-`
+`;
 
 // 9. 항공편 가격&선택하기 Box
 export const DetailPriceSelectBox = styled.div`
   width: 30%;
   height: 100%;
   border: 1px solid gray;
-`
+`;
 
 // 10. 항공편 시간
 export const DetailTime = styled(FlexCenterColumn)`
   width: 30%;
   border: 1px solid gray;
-`
+`;
 
 // 11. 항공편 이동 시간
 export const DetailTravelTime = styled.div`
   width: 40%;
-`
+`;
 
 // 12. 항공편 이동 시간 div
 export const DetailTravleDiv = styled.div`
   width: 90%;
   height: 50%;
-  border-bottom: 1px solid gray
-`
+  border-bottom: 1px solid gray;
+`;
