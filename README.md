@@ -23,9 +23,9 @@
 - react-router-dom 
 - axios
 - react-query
-- react-redux
+- recoil
 - react-toolkit
-
+- ant Design
 
 # 6. 담당 기능
 - 레이아웃 : 단이님
@@ -34,4 +34,6 @@
     * 출발, 도착지 셀렉트 박스 : 단이님
     * 가는 날짜 캘린더 선택 : 진영님
     * 인원 수 +- : 단이님
-- redux : 단이님
+- 캘린더 : 진영님
+- recoil : 단이님
+- ant Design 적용 : 단이님

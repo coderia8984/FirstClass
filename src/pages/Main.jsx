@@ -1,121 +1,93 @@
-import React, { useState } from 'react';
-import * as style from '../styles/style';
-import Calendar from 'react-calendar';
-import AirportSelectDeparture from '../components/common/AirportSelectDeparture';
-import AirportSelectArrival from '../components/common/AirportSelectArrival';
-import CaledarModal from '../components/CaledarModal';
-
-import { ReactComponent as PlusBtn } from '../styles/icons/plus.svg';
-import { ReactComponent as MinusBtn } from '../styles/icons/minus.svg';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { changeRequire } from '../redux/modules/userSearchSlice';
+import React, { useState } from "react";
+import * as style from "../styles/style";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { changeRequire } from "../redux/modules/userSearchSlice";
+import AirportSelect from "../components/common/AirportSelect";
+import { useRecoilState } from "recoil";
+import { searchState } from "../store/searchState";
+import { Button, DatePicker, InputNumber } from "antd";
 
 function Main() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const mainPhrase = '즐겨 찾는 여행 사이트를 빠르고 쉽게 검색하세요';
+  const mainPhrase = "즐겨 찾는 여행 사이트를 빠르고 쉽게 검색하세요";
 
   // 공항 select State
-  const [airport, setAirport] = useState({ departure: '', arrival: '' });
-  const { departure, arrival } = airport;
+  const [search, setSearch] = useRecoilState(searchState);
 
   // onChange 적용 함수
-  const onChangeAirport = (changeObj) => {
-    const { name, value } = changeObj.target;
+  const onChangeAirport = (name, value) => {
+    // const { name, value } = changeObj.target;
 
-    const newAirport = {
-      ...airport,
+    const newSearch = {
+      ...search,
       [name]: value,
     };
 
-    setAirport(newAirport);
+    setSearch(newSearch);
   };
 
-  // 캘린더 모달창 노출 여부 state
-  const [calendarModalOpen, setCalendarModalOpen] = useState(false);
+  // 날짜 onChange 적용 함수
+  const onChangeDate = (...rest) => {
+    const date = rest[1].replace(/-/g, "");
 
-  // 캘린더 모달창 open
-  const showCalendarModal = () => {
-    setCalendarModalOpen(true);
-  };
-
-  // 인원 수 state
-  const [number, setNumber] = useState(0);
-  const plusNumber = () => {
-    setNumber(number + 1);
-  };
-  const minusNumber = () => {
-    setNumber(number - 1);
+    onChangeAirport("date", date);
   };
 
   // 버튼 클릭 시 적용 함수
   const onClickHandler = () => {
-    if (
-      (airport.departure === '') |
-      (airport.arrival === '') |
-      (airport.departure === airport.arrival)
-    ) {
-      alert('공항을 다시 선택해주세요.');
-    } else if (number <= 0) {
-      alert('인원 수를 확인해주세요.');
-    } else {
-      alert(
-        `출발 공항:${airport.departure} 도착 공항:${airport.arrival} 인원 수: ${number}`
-      );
-      dispatch(
-        changeRequire({
-          departure: airport.departure,
-          arrival: airport.arrival,
-          date: '',
-          number: number,
-        })
-      );
-      navigate('./detail');
-    }
+    console.log(search);
+    // if (
+    //   (search.departure === "") |
+    //   (search.arrival === "") |
+    //   (search.departure === search.arrival)
+    // ) {
+    //   alert("공항을 다시 선택해주세요.");
+    // } else if (number <= 0) {
+    //   alert("인원 수를 확인해주세요.");
+    // } else {
+    //   alert(
+    //     `출발 공항:${search.departure} 도착 공항:${search.arrival} 인원 수: ${number}`
+    //   );
+    //   dispatch(
+    //     changeRequire({
+    //       departure: search.departure,
+    //       arrival: search.arrival,
+    //       date: "",
+    //       number: number,
+    //     })
+    //   );
+    //   navigate("./detail");
+    // }
   };
 
   return (
     <style.MainHeaderBack>
       <style.MainPhrase>{mainPhrase}</style.MainPhrase>
       <style.MainConditionBox>
-        <AirportSelectDeparture
-          name='departure'
-          value={departure}
+        <AirportSelect
+          placeholder="출발지"
+          name="departure"
           onChange={onChangeAirport}
         />
-        <AirportSelectArrival
-          name='arrival'
-          value={arrival}
+        <AirportSelect
+          placeholder="도착지"
+          name="arrival"
           onChange={onChangeAirport}
         />
-        <style.MainCalendar onClick={showCalendarModal}>
-          떠나는 날짜
-        </style.MainCalendar>
-        {calendarModalOpen && (
-          <CaledarModal setModalOpen={setCalendarModalOpen} />
-        )}
-        <style.MainPersonNumber>
-          <div>인원 수</div>
-          <style.FlexCenter>
-            <MinusBtn
-              width='15px'
-              height='15px'
-              color='black'
-              onClick={minusNumber}
-            />
-            <p>{number}</p>
-            <PlusBtn
-              width='15px'
-              height='15px'
-              color='black'
-              onClick={plusNumber}
-            />
-          </style.FlexCenter>
-        </style.MainPersonNumber>
-        <style.MainSearchBtn onClick={onClickHandler}>
+        <DatePicker placeholder="떠나는 날짜" onChange={onChangeDate} />
+        <InputNumber
+          placeholder="인원 수"
+          min={0}
+          onChange={(number) => onChangeAirport("number", number)}
+        />
+        {/* <style.MainSearchBtn onClick={onClickHandler}>
           검색하기
-        </style.MainSearchBtn>
+        </style.MainSearchBtn> */}
+        <Button type="primary" size={"large"} onClick={onClickHandler}>
+          검색하기
+        </Button>
       </style.MainConditionBox>
     </style.MainHeaderBack>
   );

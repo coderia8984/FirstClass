@@ -1,10 +1,13 @@
-import React from 'react'
-import Router from './shared/Router'
+import React from "react";
+import Router from "./shared/Router";
+import { RecoilRoot } from "recoil";
 
 function App() {
   return (
-    <Router />
-  )
+    <RecoilRoot>
+      <Router />
+    </RecoilRoot>
+  );
 }
 
-export default App
+export default App;
