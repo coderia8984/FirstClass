@@ -1,14 +1,13 @@
-import React from "react";
-import * as style from "../styles/style";
-import { ReactComponent as LeftArrow } from "../styles/icons/left-arrow.svg";
-import { ReactComponent as RightArrow } from "../styles/icons/right-arrow.svg";
-import DetailFlight from "../components/DetailFlight";
-import { useSelector } from "react-redux";
-
+import React from 'react';
+import * as style from '../styles/style';
+import { ReactComponent as LeftArrow } from '../styles/icons/left-arrow.svg';
+import { ReactComponent as RightArrow } from '../styles/icons/right-arrow.svg';
+import DetailFlight from '../components/DetailFlight';
+import { useSelector } from 'react-redux';
 
 function Detail() {
   const searchRequire = useSelector((state) => state.searchRequire);
-  console.log(searchRequire)
+  console.log(searchRequire);
   return (
     <>
       <style.DetailHeaderContainer>
@@ -29,20 +28,16 @@ function Detail() {
             </style.DetailNumClass>
           </style.DetailUserBox>
           <style.DetailDateBox>
-            <LeftArrow width="10px" height="10px"/>
+            <LeftArrow width='10px' height='10px' />
             <span>&nbsp;06월 10일&nbsp;</span>
-            <RightArrow width="10px" height="10px"/>
+            <RightArrow width='10px' height='10px' />
           </style.DetailDateBox>
         </style.DetailHeader>
       </style.DetailHeaderContainer>
       <style.DetailFlightContainer>
-            <DetailFlight>
-
-            </DetailFlight>
-            <DetailFlight>
-                
-            </DetailFlight>
-        </style.DetailFlightContainer>
+        <DetailFlight></DetailFlight>
+        <DetailFlight></DetailFlight>
+      </style.DetailFlightContainer>
     </>
   );
 }

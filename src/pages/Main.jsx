@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import * as style from "../styles/style";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { changeRequire } from "../redux/modules/userSearchSlice";
-import AirportSelect from "../components/common/AirportSelect";
-import { useRecoilState } from "recoil";
-import { searchState } from "../store/searchState";
-import { Button, DatePicker, InputNumber } from "antd";
+import React, { useState } from 'react';
+import * as style from '../styles/style';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { changeRequire } from '../redux/modules/userSearchSlice';
+import AirportSelect from '../components/common/AirportSelect';
+import { useRecoilState } from 'recoil';
+import { searchState } from '../store/searchState';
+import { Button, DatePicker, InputNumber } from 'antd';
 
 function Main() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const mainPhrase = "즐겨 찾는 여행 사이트를 빠르고 쉽게 검색하세요";
+  const mainPhrase = '즐겨 찾는 여행 사이트를 빠르고 쉽게 검색하세요';
 
   // 공항 select State
   const [search, setSearch] = useRecoilState(searchState);
@@ -30,9 +30,9 @@ function Main() {
 
   // 날짜 onChange 적용 함수
   const onChangeDate = (...rest) => {
-    const date = rest[1].replace(/-/g, "");
+    const date = rest[1].replace(/-/g, '');
 
-    onChangeAirport("date", date);
+    onChangeAirport('date', date);
   };
 
   // 버튼 클릭 시 적용 함수
@@ -67,25 +67,25 @@ function Main() {
       <style.MainPhrase>{mainPhrase}</style.MainPhrase>
       <style.MainConditionBox>
         <AirportSelect
-          placeholder="출발지"
-          name="departure"
+          placeholder='출발지'
+          name='departure'
           onChange={onChangeAirport}
         />
         <AirportSelect
-          placeholder="도착지"
-          name="arrival"
+          placeholder='도착지'
+          name='arrival'
           onChange={onChangeAirport}
         />
-        <DatePicker placeholder="떠나는 날짜" onChange={onChangeDate} />
+        <DatePicker placeholder='떠나는 날짜' onChange={onChangeDate} />
         <InputNumber
-          placeholder="인원 수"
+          placeholder='인원 수'
           min={0}
-          onChange={(number) => onChangeAirport("number", number)}
+          onChange={(number) => onChangeAirport('number', number)}
         />
         {/* <style.MainSearchBtn onClick={onClickHandler}>
           검색하기
         </style.MainSearchBtn> */}
-        <Button type="primary" size={"large"} onClick={onClickHandler}>
+        <Button type='primary' size={'large'} onClick={onClickHandler}>
           검색하기
         </Button>
       </style.MainConditionBox>

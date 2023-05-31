@@ -93,6 +93,11 @@ export const MainSelectDeparture = styled.select`
   font-size: 14px;
   color: #545860;
 `;
+export const DepartureTitle = styled.select`
+  font-weight: 700;
+  font-size: 14px;
+  color: #545860;
+`;
 export const MainSelectArrival = styled.select`
   width: 200px;
   height: 60px;
@@ -156,7 +161,7 @@ export const MainSearchBtn = styled.button`
 // 1. 상세 header container
 export const DetailHeaderContainer = styled(FlexCenter)`
   width: 100%;
-  height: 60px;
+  height: 80px;
   background-color: #05203c;
 `;
 
@@ -169,47 +174,45 @@ export const DetailHeader = styled.div`
   width: 1000px;
   height: 40px;
   padding: 1px;
-  border: 1px solid white;
 `;
 
 // 3. 상세 header의 사용자 검색조건 box
 export const DetailUserBox = styled(FlexCenterColumn)`
   width: 300px;
   height: 100%;
-
-  border: 1px solid white;
 `;
 
 // 4. 사용자 검색조건 box -> 출발지 & 도착지
 export const DetailDepartArriv = styled.div`
   width: 300px;
   height: 50%;
-  border: 1px solid white;
+
   font-size: 15px;
   color: white;
+  margin-left: 200px;
+  font-weight: 700;
 `;
 
 // 5. 사용자 검색조건 box -> 인원 & 등급
 export const DetailNumClass = styled.div`
   width: 300px;
   height: 50%;
-  border: 1px solid white;
   color: white;
+  font-weight: 700;
+  margin: 10px 0px 20px 200px;
 `;
 
 // 6. 날짜 선택 box
 export const DetailDateBox = styled(FlexCenter)`
   width: 300px;
   height: 100%;
-
-  border: 1px solid white;
   color: white;
 `;
 
 // 7. 항공편 container
 export const DetailFlightContainer = styled(FlexCenterColumn)`
   width: 800px;
-  border: 1px solid red;
+  margin-top: 50px;
   padding: 10px;
   gap: 12px;
 `;
@@ -218,13 +221,15 @@ export const DetailFlightContainer = styled(FlexCenterColumn)`
 export const DetailFlightBox = styled(FlexCenter)`
   margin: 0 auto;
   width: 100%;
-  height: 80px;
+  height: 120px;
+  margin-bottom: 20px;
 `;
 
 // 9. 항공편 시간&코드 Box
 export const DetailFlightTimeBox = styled(FlexCenter)`
   width: 70%;
   height: 100%;
+  border-radius: 0.75rem 0 0 0.75rem;
   border: 1px solid gray;
 `;
 
@@ -233,12 +238,12 @@ export const DetailPriceSelectBox = styled.div`
   width: 30%;
   height: 100%;
   border: 1px solid gray;
+  border-radius: 0 0.75rem 0.75rem 0;
 `;
 
 // 10. 항공편 시간
 export const DetailTime = styled(FlexCenterColumn)`
   width: 30%;
-  border: 1px solid gray;
 `;
 
 // 11. 항공편 이동 시간

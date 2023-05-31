@@ -1,5 +1,5 @@
-import React from "react";
-import * as style from "../styles/style";
+import React from 'react';
+import * as style from '../styles/style';
 
 function DetailFlight() {
   return (
@@ -11,9 +11,7 @@ function DetailFlight() {
           <span>ICN</span>
         </style.DetailTime>
         <style.DetailTravelTime>
-            <style.DetailTravleDiv>
-                2시간 30분
-            </style.DetailTravleDiv>
+          <style.DetailTravleDiv>2시간 30분</style.DetailTravleDiv>
         </style.DetailTravelTime>
         <style.DetailTime>
           <span>13:05</span>
