@@ -8,6 +8,7 @@ function DetailFlight() {
       <style.DetailFlightTimeBox>
         <style.DetailTime>
           <span>13:05</span>
+
           <span>ICN</span>
         </style.DetailTime>
         <style.DetailTravelTime>
