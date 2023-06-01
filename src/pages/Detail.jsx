@@ -3,11 +3,10 @@ import * as style from '../styles/style';
 import { ReactComponent as LeftArrow } from '../styles/icons/left-arrow.svg';
 import { ReactComponent as RightArrow } from '../styles/icons/right-arrow.svg';
 import DetailFlight from '../components/DetailFlight';
-import { useSelector } from 'react-redux';
+
 
 function Detail() {
-  const searchRequire = useSelector((state) => state.searchRequire);
-  console.log(searchRequire);
+  
   return (
     <>
       <style.DetailHeaderContainer>

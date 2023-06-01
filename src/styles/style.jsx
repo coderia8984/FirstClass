@@ -76,72 +76,27 @@ export const MainPhrase = styled.div`
 `;
 
 // 3. 검색 조건 container
-export const MainConditionBox = styled(FlexCenter)`
+export const MainConditionContainer = styled(FlexCenter)`
   width: 2000px;
   height: 100px;
+  padding-top: 20px;
   /* border: 1px solid white; */
   gap: 5px;
 `;
 
-// 4. 셀렉트 박스
-export const MainSelectDeparture = styled.select`
-  width: 200px;
-  height: 60px;
-  border: 1px solid white;
-  border-radius: 0.75rem 0 0 0.75rem;
-  font-weight: 700;
-  font-size: 14px;
-  color: #545860;
-`;
-export const DepartureTitle = styled.select`
-  font-weight: 700;
-  font-size: 14px;
-  color: #545860;
-`;
-export const MainSelectArrival = styled.select`
-  width: 200px;
-  height: 60px;
-  border: 1px solid white;
-
-  font-weight: 700;
-  font-size: 14px;
-  color: #545860;
-`;
-
-// 5. 캘린더
-export const MainCalendar = styled.button`
-  width: 200px;
-  height: 60px;
-  border: 1px solid white;
+// 4. 검색 조건 box
+export const MainConditionBox = styled(FlexCenterColumn)`
+  width: 220px;
+  height: 80px;
   background-color: white;
-  font-size: 14px;
-  font-weight: 700;
-  color: #545860;
-`;
-
-// 5-1. 캘린더 모달
-export const CalendarModalContainer = styled.div`
-  margin: 600px 100px 0px 0px;
-
-  width: 500px;
-  height: 500px;
-  z-index: 2;
-  background-color: gray;
-  border: 1px solid black;
-  border-radius: 8px;
-`;
-
-// 6. 인원수 박스
-export const MainPersonNumber = styled(FlexCenterColumn)`
-  width: 200px;
-  height: 60px;
   border: 1px solid white;
-  background-color: white;
-  border-radius: 0 0.75rem 0.75rem 0;
-  font-weight: 700;
-  font-size: 14px;
-  color: #545860;
-`;
+  border-radius: 10px;
+  gap: 5px;
+
+  > div {
+    font-weight: 800;
+  }
+`
 
 // 7. 검색하기 버튼
 export const MainSearchBtn = styled.button`
