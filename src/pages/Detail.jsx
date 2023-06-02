@@ -1,17 +1,22 @@
-import React from 'react';
-import * as style from '../styles/style';
-
-import { ReactComponent as LeftArrow } from '../styles/icons/left-arrow.svg';
-import { ReactComponent as RightArrow } from '../styles/icons/right-arrow.svg';
-import DetailFlight from '../components/DetailFlight';
+import React from "react";
 import { useRecoilValue } from "recoil";
+import { Button, DatePicker } from "antd";
+
+import * as style from "../styles/style";
+
+import DetailFlight from "../components/DetailFlight";
 import { searchState } from "../store/searchState";
 
 function Detail() {
   // 검색조건 state
   const searchCondition = useRecoilValue(searchState);
   console.log(searchCondition);
-  
+
+  // 날짜 onChange 적용 함수
+  const onChangeDate = (...rest) => {
+    const date = rest[1].replace(/-/g, "");
+  };
+
   return (
     <>
       <style.DetailHeaderContainer>
@@ -32,9 +37,7 @@ function Detail() {
             </style.DetailNumClass>
           </style.DetailUserBox>
           <style.DetailDateBox>
-            <LeftArrow width='10px' height='10px' />
-            <span>&nbsp;06월 10일&nbsp;</span>
-            <RightArrow width='10px' height='10px' />
+            <DatePicker placeholder="떠나는 날짜" onChange={onChangeDate} />
           </style.DetailDateBox>
         </style.DetailHeader>
       </style.DetailHeaderContainer>
