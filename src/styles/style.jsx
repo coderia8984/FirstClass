@@ -96,7 +96,7 @@ export const MainConditionBox = styled(FlexCenterColumn)`
   > div {
     font-weight: 800;
   }
-`
+`;
 
 // 7. 검색하기 버튼
 export const MainSearchBtn = styled.button`
@@ -113,6 +113,7 @@ export const MainSearchBtn = styled.button`
 `;
 
 // 항공편 상세 페이지
+
 // 1. 상세 header container
 export const DetailHeaderContainer = styled(FlexCenter)`
   width: 100%;
@@ -186,6 +187,7 @@ export const DetailFlightTimeBox = styled(FlexCenter)`
   height: 100%;
   border-radius: 0.75rem 0 0 0.75rem;
   border: 1px solid gray;
+  border-right-style: none;
 `;
 
 // 9. 항공편 가격&선택하기 Box
@@ -194,21 +196,65 @@ export const DetailPriceSelectBox = styled.div`
   height: 100%;
   border: 1px solid gray;
   border-radius: 0 0.75rem 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
-// 10. 항공편 시간
+// 9-1 항공편 가격들
+export const DetailPrices = styled.div`
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+`;
+
+// 10. 항공편 시간/공항박스
 export const DetailTime = styled(FlexCenterColumn)`
   width: 30%;
+  margin-bottom: 10px;
+`;
+// 10-1 항공편 시간들
+export const DetailTimes = styled.span`
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+  color: #545860;
+`;
+
+//10-2 항공편 공항들
+export const DetailAirports = styled.span`
+  color: #545860;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
 `;
 
 // 11. 항공편 이동 시간
 export const DetailTravelTime = styled.div`
-  width: 40%;
+  max-width: 36%;
+  padding: 0 0.25rem;
+  flex: 0 1 36%;
+  text-align: center;
 `;
 
 // 12. 항공편 이동 시간 div
-export const DetailTravleDiv = styled.div`
+export const DetailTravleDiv = styled.span`
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 400;
+  color: #545860;
+`;
+// 12-1. 이동시간 아래 라인
+export const DetailTravleLine = styled.div`
+  display: block;
   width: 90%;
-  height: 50%;
-  border-bottom: 1px solid gray;
+  height: 0.1rem;
+  margin: 0.25rem auto;
+  padding: 0;
+  border-radius: 0.5rem;
+  background-color: #545860;
+  line-height: 0;
+  text-align: center;
 `;
