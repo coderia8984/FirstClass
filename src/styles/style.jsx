@@ -86,7 +86,7 @@ export const MainConditionContainer = styled(FlexCenter)`
 
 // 4. 검색 조건 box
 export const MainConditionBox = styled(FlexCenterColumn)`
-  width: 220px;
+  width: 200px;
   height: 80px;
   background-color: white;
   border: 1px solid white;
@@ -98,7 +98,7 @@ export const MainConditionBox = styled(FlexCenterColumn)`
   }
 `
 
-// 7. 검색하기 버튼
+// 5. 검색하기 버튼
 export const MainSearchBtn = styled.button`
   width: 150px;
   height: 60px;

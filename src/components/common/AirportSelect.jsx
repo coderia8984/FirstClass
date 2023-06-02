@@ -1,10 +1,13 @@
 import React from "react";
-import * as style from "../../styles/style";
 import { Select } from "antd";
+import { useRecoilValue } from "recoil";
+
+import { searchState } from "../../store/searchState";
 
 function AirportSelect({ placeholder, name, onChange }) {
   // 공항을 담고 있는 배열 -> 나중에 db get 으로 변경해야 함(수정 필요)
   const airportArray = ["인천", "부산", "김해", "제주", "대구", "여수"];
+  
   return (
     <Select placeholder={placeholder} onChange={(...rest)=>onChange(name, rest[0])}>
       {airportArray.map((airport) => {

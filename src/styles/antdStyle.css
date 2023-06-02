@@ -1,0 +1,7 @@
+/* 검색하기 버튼 */
+.searchBtn {
+    width: 200px;
+    /* height 왜 적용안되영?ㅇㅁㅇ???? */
+    height: 80px;   
+    border-radius: 10px;
+}

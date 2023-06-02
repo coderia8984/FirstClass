@@ -1,12 +1,20 @@
 import React from "react";
-import * as style from "../styles/style";
 import { useNavigate } from "react-router-dom";
-import AirportSelect from "../components/common/AirportSelect";
 import { useRecoilState } from "recoil";
 import { searchState } from "../store/searchState";
 import { Button, DatePicker, InputNumber } from "antd";
+import { useQuery } from 'react-query';
+
+import * as style from "../styles/style";
+import AirportSelect from "../components/common/AirportSelect";
+import '../styles/antdStyle.css'
+import { AirportAPI } from '../axios/api';
+
 
 function Main() {
+  const { data, isLoading, error } = useQuery("airport", AirportAPI.getAirport);
+  console.log(data);
+
   const navigate = useNavigate();
   const mainPhrase = "즐겨 찾는 여행 사이트를 빠르고 쉽게 검색하세요";
 
@@ -89,7 +97,7 @@ function Main() {
         {/* <style.MainSearchBtn onClick={onClickHandler}>
           검색하기
         </style.MainSearchBtn> */}
-        <Button type="primary" size={"large"} onClick={onClickHandler}>
+        <Button type="primary" size={"large"} onClick={onClickHandler} className="searchBtn">
           검색하기
         </Button>
       </style.MainConditionContainer>

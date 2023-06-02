@@ -1,10 +1,20 @@
 import React from "react";
 import Router from "./shared/Router";
-// import { RecoilRoot } from "recoil";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    }
+  }
+});
 
 function App() {
   return (
-    <Router />
+    <QueryClientProvider client={queryClient}>
+      <Router />
+    </QueryClientProvider>
   );
 }
 

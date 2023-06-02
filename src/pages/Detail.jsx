@@ -1,11 +1,16 @@
 import React from 'react';
 import * as style from '../styles/style';
+
 import { ReactComponent as LeftArrow } from '../styles/icons/left-arrow.svg';
 import { ReactComponent as RightArrow } from '../styles/icons/right-arrow.svg';
 import DetailFlight from '../components/DetailFlight';
-
+import { useRecoilValue } from "recoil";
+import { searchState } from "../store/searchState";
 
 function Detail() {
+  // 검색조건 state
+  const searchCondition = useRecoilValue(searchState);
+  console.log(searchCondition);
   
   return (
     <>
