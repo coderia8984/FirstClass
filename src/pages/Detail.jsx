@@ -17,7 +17,7 @@ function Detail() {
 
   // 항공편 받아오기
   // 공항정보 받아오기
-  const { data, isLoading, error } = useQuery("flights", () => AirportAPI.getFlights(searchCondition));
+  const { data, isLoading, error } = useQuery(["flights"], () => AirportAPI.getFlights(searchCondition));
   if (isLoading || error) {
     return <></>;
   }

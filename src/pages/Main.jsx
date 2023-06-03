@@ -18,7 +18,7 @@ function Main() {
   const [search, setSearch] = useRecoilState(searchState);
 
   // 공항정보 받아오기
-  const { data, isLoading, error } = useQuery("airport", AirportAPI.getAirport);
+  const { data, isLoading, error } = useQuery(["airport"], AirportAPI.getAirport);
   if (isLoading || error) {
     return <></>;
   }

@@ -9,7 +9,9 @@ const instance = axios.create({
 });
 
 // 로그인관련 & token
-export const AuthAPI = {};
+export const AuthAPI = {
+  getLogin: () => instance.get("/auth/kakao"),
+};
 
 // 공항 & 항공편 & 예약
 export const AirportAPI = {
