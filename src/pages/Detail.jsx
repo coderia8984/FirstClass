@@ -1,17 +1,28 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 import { Button, DatePicker } from 'antd';
+import { useQuery } from "react-query";
+import { Navigate, useNavigate } from 'react-router-dom';
 
 import * as style from '../styles/style';
-
 import DetailFlight from '../components/DetailFlight';
 import { searchState } from '../store/searchState';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { AirportAPI } from "../axios/api";
+
 
 function Detail() {
   // 검색조건 state
   const searchCondition = useRecoilValue(searchState);
   console.log(searchCondition);
+
+  // 항공편 받아오기
+  // 공항정보 받아오기
+  const { data, isLoading, error } = useQuery("flights", () => AirportAPI.getFlights(searchCondition));
+  if (isLoading || error) {
+    return <></>;
+  }
+  console.log(data)
+
 
   // 날짜 onChange 적용 함수
   const onChangeDate = (...rest) => {
