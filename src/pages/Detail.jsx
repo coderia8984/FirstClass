@@ -1,11 +1,12 @@
-import React from "react";
-import { useRecoilValue } from "recoil";
-import { Button, DatePicker } from "antd";
+import React from 'react';
+import { useRecoilValue } from 'recoil';
+import { Button, DatePicker } from 'antd';
 
-import * as style from "../styles/style";
+import * as style from '../styles/style';
 
-import DetailFlight from "../components/DetailFlight";
-import { searchState } from "../store/searchState";
+import DetailFlight from '../components/DetailFlight';
+import { searchState } from '../store/searchState';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function Detail() {
   // 검색조건 state
@@ -14,7 +15,7 @@ function Detail() {
 
   // 날짜 onChange 적용 함수
   const onChangeDate = (...rest) => {
-    const date = rest[1].replace(/-/g, "");
+    const date = rest[1].replace(/-/g, '');
   };
 
   return (
@@ -37,7 +38,7 @@ function Detail() {
             </style.DetailNumClass>
           </style.DetailUserBox>
           <style.DetailDateBox>
-            <DatePicker placeholder="떠나는 날짜" onChange={onChangeDate} />
+            <DatePicker placeholder='떠나는 날짜' onChange={onChangeDate} />
           </style.DetailDateBox>
         </style.DetailHeader>
       </style.DetailHeaderContainer>
