@@ -258,3 +258,18 @@ export const DetailTravleLine = styled.div`
   line-height: 0;
   text-align: center;
 `;
+// 13. 모달창 continer
+export const ModalContainer = styled.div``;
+// 13-1. 모달창
+export const DetailButtonModal = styled.div`
+  width: 500px;
+  height: 550px;
+  z-index: 999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid rgba(5, 32, 60, 0.332);
+  border-radius: 8px;
+`;
