@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 // 공통 레이아웃
 // 1. flexbox, 가운데 정렬
@@ -52,7 +52,12 @@ export const LoginOutBtn = styled.button`
   border: 1px solid #05203c;
   background-color: #05203c;
   color: white;
-  cursor: pointer;
+  
+
+  > a {
+    color: white;
+    cursor: pointer;
+  }
 `;
 
 // Main

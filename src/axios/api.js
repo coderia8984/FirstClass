@@ -17,7 +17,7 @@ export const AuthAPI = {
 export const AirportAPI = {
   getAirport: () => instance.get("/api/airports"),
   getFlights: (payload) => {
-    const query = `sairport_id=${payload.departureID}&eairport_id=${payload.arrivalID}&start_datetime=${payload.date}0000&people_num=${payload.number}`;
+    const query = `sairport_id=${payload.s_id}&eairport_id=${payload.e_id}&start_datetime=${payload.start_datetime}0000&people_num=${payload.people_num}`;
     return instance.get(`/api/flights?${query}`);
   },
 };

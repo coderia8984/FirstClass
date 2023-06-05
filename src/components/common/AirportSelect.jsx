@@ -1,8 +1,5 @@
 import React from 'react';
 import { Select } from 'antd';
-import { useRecoilValue } from 'recoil';
-
-import { searchState } from '../../store/searchState';
 
 function AirportSelect({ placeholder, name, onChange, airportData }) {
   // 공항을 담고 있는 배열 -> 나중에 db get 으로 변경해야 함(수정 필요)
