@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { Button, DatePicker } from "antd";
 import { useQuery } from "react-query";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import queryString from "query-string";
 
 import * as style from "../styles/style";
@@ -10,6 +10,15 @@ import DetailFlight from "../components/DetailFlight";
 import { AirportAPI } from "../axios/api";
 
 function Detail() {
+  const navigate = useNavigate();
+  // token이 없으면 메인 화면으로 돌아가기
+  useEffect(()=>{
+    if(!sessionStorage.getItem('RefreshToken')) {
+      alert('로그인이 필요합니다.')
+      navigate('/');
+    } 
+  },[])
+
   // 검색 조건 받아오기
   const { search } = useLocation();
   const searchCondition = queryString.parse(search);

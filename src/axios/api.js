@@ -8,6 +8,21 @@ const instance = axios.create({
   },
 });
 
+instance.interceptors.request.use(
+  function (config) {
+    if (!!sessionStorage.getItem("RefreshToken")) {
+      const refreshToken = sessionStorage.getItem("RefreshToken");
+      config.headers.RefreshToken = `Bearer ${refreshToken}`;
+    }
+
+    return config;
+  },
+  function (error) {
+    console.log("request error", error);
+    return Promise.reject(error);
+  }
+);
+
 // 로그인관련 & token
 export const AuthAPI = {
   getLogin: () => instance.get("/auth/kakao"),

@@ -1,39 +1,58 @@
-import React from 'react';
-import * as style from '../styles/style';
-import { ReactComponent as Logo } from '../styles/icons/Skyscanner_Logo_LockupHorizontal_SkyBlue_RGB.svg';
-import { Link, useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from 'react-query';
-import { AuthAPI } from '../axios/api';
+import React, { useEffect, useState } from "react";
+import * as style from "../styles/style";
+import { ReactComponent as Logo } from "../styles/icons/Skyscanner_Logo_LockupHorizontal_SkyBlue_RGB.svg";
+import { Link, useNavigate } from "react-router-dom";
+import { useMutation, useQuery } from "react-query";
+import { AuthAPI } from "../axios/api";
+import { useRecoilValueLoadable_TRANSITION_SUPPORT_UNSTABLE } from "recoil";
 
 function Header() {
+  const color = "#05203c";
+
   // login 유무 변수(수정 필요)
-  const isLogged = false;
-  const color = '#05203c';
+  const [isLogged, setIsLogged] = useState(false);
+  useEffect(() => {
+    setIsLogged(!!sessionStorage.getItem("RefreshToken"));
+  }, [sessionStorage.getItem("RefreshToken")]);
+
+  // let isLogged = false;
+  // if (!!sessionStorage.getItem('RefreshToken')) {
+  //   isLogged = true;
+  // }
 
   // 로고 클릭 이벤트 메인 페이지 이동
   const navigate = useNavigate();
   const navigateToMain = () => {
-    navigate('/');
+    navigate("/");
   };
 
-  // 로그인
+  // 로그아웃
   const onClickHandler = () => {
-    // if (isLogged) {
+    sessionStorage.clear();
 
-    // } else {
-    //   const kakao = process.env.REACT_APP_SERVER_URL + 'auth/kakao'
-    //   return <a href={kakao}/>
-    // }
-  }
+    alert('로그아웃이 완료되었습니다.')
+    navigate("/");
+  };
 
   return (
     <>
       <style.HeaderContainer backgroundColor={color}>
         <style.HeaderLogoLoginBox>
-          <Logo width='250' height='30' cursor="pointer" onClick={navigateToMain} />
+          <Logo
+            width="250"
+            height="30"
+            cursor="pointer"
+            onClick={navigateToMain}
+          />
           {/* 로그인 유무에 따라 로그인 버튼 변경 (수정 필요) */}
           <style.LoginOutBtn onClick={onClickHandler}>
-            {isLogged ? '로그아웃' : <a href='http://52.79.197.128/auth/kakao'>로그인</a>}
+            {isLogged ? (
+              "로그아웃"
+            ) : (
+              <a href={process.env.REACT_APP_SERVER_URL + "/auth/kakao"}>
+                로그인
+              </a>
+            )}
           </style.LoginOutBtn>
         </style.HeaderLogoLoginBox>
       </style.HeaderContainer>
