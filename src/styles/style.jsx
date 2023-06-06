@@ -263,9 +263,7 @@ export const DetailTravleLine = styled.div`
   text-align: center;
 `;
 // 13. 모달창 continer
-export const ModalContainer = styled.div``;
-// 13-1. 모달창
-export const DetailButtonModal = styled.div`
+export const ModalContainer = styled.div`
   width: 500px;
   height: 550px;
   z-index: 999;
@@ -276,6 +274,11 @@ export const DetailButtonModal = styled.div`
   background-color: white;
   border: 1px solid rgba(5, 32, 60, 0.332);
   border-radius: 8px;
+`;
+// 13-1. 모달창
+export const DetailButtonModal = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 // 14. InputBox
