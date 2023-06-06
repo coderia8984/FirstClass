@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // 공통 레이아웃
 // 1. flexbox, 가운데 정렬
@@ -52,7 +52,6 @@ export const LoginOutBtn = styled.button`
   border: 1px solid #05203c;
   background-color: #05203c;
   color: white;
-  
 
   > a {
     color: white;
@@ -277,4 +276,15 @@ export const DetailButtonModal = styled.div`
   background-color: white;
   border: 1px solid rgba(5, 32, 60, 0.332);
   border-radius: 8px;
+`;
+
+// 14. InputBox
+export const DetailInputBox = styled.div`
+  display: flex;
+  justify-content: right;
+
+  width: 100%;
+  height: 2.25rem;
+  padding: 20px 0 10px 0;
+  margin-right: 680px;
 `;
