@@ -1,7 +1,7 @@
 import React from 'react';
 import * as style from '../../styles/style';
 
-import { Button, DatePicker } from 'antd';
+import { Button } from 'antd';
 
 function Modal({ isOpen, closeModal, flight }) {
   return (

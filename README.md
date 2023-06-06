@@ -23,7 +23,7 @@
 - react-router-dom 
 - axios
 - react-query
-- recoil
+- recoil : query string으로 대체해서 삭제
 - react-toolkit
 - ant Design
 
@@ -34,6 +34,11 @@
     * 출발, 도착지 셀렉트 박스 : 단이님
     * 가는 날짜 캘린더 선택 : 진영님
     * 인원 수 +- : 단이님
+- Detail Page
+    * 항공편 조회 : 진영님
+    * 정렬 조건 적용 : 단이님
+- Reservation Modal
+    * 항공편 노출 : 진영님
 - 캘린더 : 진영님
 - recoil : 단이님
-- ant Design 적용 : 단이님
+- ant Design 적용 : 단이님, 진영님

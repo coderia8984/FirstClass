@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { Button, DatePicker } from "antd";
-import { Select, Space } from "antd";
+import { Button, DatePicker, Select } from "antd";
 import { useQuery } from "react-query";
 import { useLocation, useNavigate } from "react-router-dom";
 import queryString from "query-string";
+import { WechatOutlined } from "@ant-design/icons";
 
 import * as style from "../styles/style";
 import DetailFlight from "../components/DetailFlight";
 import { AirportAPI } from "../axios/api";
+import ChatModal from "../components/ChatModal";
 
 function Detail() {
   const navigate = useNavigate();
@@ -70,17 +71,24 @@ function Detail() {
       ...searchCondition,
       ...sortBy,
     };
-    console.log(searchCondition)
+    console.log(searchCondition);
   };
 
+  // 채팅창 modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   // 항공편 받아오기
-  let { data, isLoading, error } = useQuery(["flights", sortBy], () => AirportAPI.getFlights(searchCondition));
+  let { data, isLoading, error } = useQuery(["flights", sortBy], () =>
+    AirportAPI.getFlights(searchCondition)
+  );
   if (isLoading || error) {
     return <></>;
   }
-  // console.log(data);
   const flightData = data.data.data;
-  // console.log(flightData);
+
 
   // 날짜 onChange 적용 함수
   const onChangeDate = (...rest) => {
@@ -113,6 +121,15 @@ function Detail() {
       </style.DetailHeaderContainer>
       {/* 상세페이지 body */}
       <style.DetailInputBox>
+        <Button
+          type="primary"
+          icon={<WechatOutlined />}
+          style={{ backgroundColor: "skyblue" }}
+          onClick={openModal}
+        >
+          채팅창 연결
+        </Button>
+        <ChatModal isOpen={isModalOpen} closeModal={closeModal}/>
         <Select
           defaultValue="검색조건"
           style={{
