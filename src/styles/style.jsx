@@ -264,8 +264,8 @@ export const DetailTravleLine = styled.div`
 `;
 // 13. 모달창 continer
 export const ModalContainer = styled.div`
-  width: 500px;
-  height: 550px;
+  width: 300px;
+  height: 280px;
   z-index: 999;
   position: absolute;
   top: 50%;
@@ -274,29 +274,74 @@ export const ModalContainer = styled.div`
   background-color: white;
   border: 1px solid rgba(5, 32, 60, 0.332);
   border-radius: 8px;
+  padding: 30px;
 `;
-// 13-1. 모달창
+// 14. 모달 세부사항 box
+export const ModalDetailBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+// 14-1. 모달 리스트박스
+export const ModalListBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+`;
+//
+export const ModalDetail = styled.div``;
+
+//14-1-1 모달 라인박스
+export const ModalDetailTravelTime = styled.span`
+  max-width: 36%;
+  padding: 10px 0.25rem;
+  flex: 0 1 36%;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 400;
+  color: #545860;
+`;
+// 12-1. 이동시간 아래 라인
+export const ModalDetailTravleLine = styled.div`
+  display: block;
+  width: 90%;
+  height: 0.1rem;
+  margin: 0.25rem auto;
+  padding: 0;
+  border-radius: 0.5rem;
+  background-color: #545860;
+  line-height: 0;
+  text-align: center;
+`;
+
+// 14-2 모달 총합총인원
+export const ModalTotal = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+`;
+
+// 14-3. 모달 세부사항 총인원
+export const ModalPersonBox = styled.div`
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
+// 14-4. 모달 세부사항 가격 총합
+export const ModalPricesBox = styled.div``;
+
+// 15. 모달 btn box
 export const DetailButtonModal = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin-top: 25px;
 `;
 
-// 13-2. 예약하기 모달창
-export const DetailChattingModal = styled.div`
-  width: 500px;
-  height: 550px;
-  z-index: 999;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  border: 1px solid rgba(5, 32, 60, 0.332);
-  border-radius: 8px;
-`;
-
-
-// 14. InputBox
+// 16. InputBox
 export const DetailInputBox = styled.div`
   display: flex;
   /* align-items: center; */

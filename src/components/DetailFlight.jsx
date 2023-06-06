@@ -45,7 +45,7 @@ function DetailFlight({ flight }) {
           <Button type='primary' size={'large'} onClick={openModal}>
             선택하기
           </Button>
-          <Modal isOpen={isModalOpen} closeModal={closeModal} flight={flight}/>
+          <Modal isOpen={isModalOpen} closeModal={closeModal} flight={flight} />
         </div>
       </style.DetailPriceSelectBox>
     </style.DetailFlightBox>
