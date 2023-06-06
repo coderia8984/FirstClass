@@ -1,8 +1,8 @@
-import React from "react";
-import * as style from "../styles/style";
-import { Button, DatePicker } from "antd";
-import { useState } from "react";
-import Modal from "./common/Modal";
+import React from 'react';
+import * as style from '../styles/style';
+import { Button, DatePicker } from 'antd';
+import { useState } from 'react';
+import Modal from './common/Modal';
 
 function DetailFlight({ flight }) {
   // console.log(flight)
@@ -17,23 +17,31 @@ function DetailFlight({ flight }) {
       {/* 시간 */}
       <style.DetailFlightTimeBox>
         <style.DetailTime>
-          <style.DetailTimes>{flight.start_datetime.substring(11,16)}</style.DetailTimes>
-          <style.DetailAirports>ICN</style.DetailAirports>
+          <style.DetailTimes>
+            {flight.start_datetime.substring(11, 16)}
+          </style.DetailTimes>
+          <style.DetailAirports>
+            {flight.start_airport.airport_city}
+          </style.DetailAirports>
         </style.DetailTime>
         <style.DetailTravelTime>
-          <style.DetailTravleDiv>2시간 30분</style.DetailTravleDiv>
+          <style.DetailTravleDiv></style.DetailTravleDiv>
           <style.DetailTravleLine></style.DetailTravleLine>
         </style.DetailTravelTime>
         <style.DetailTime>
-          <style.DetailTimes>오전 10:05</style.DetailTimes>
-          <style.DetailAirports>ICN</style.DetailAirports>
+          <style.DetailTimes>
+            {flight.end_datetime.substring(11, 16)}
+          </style.DetailTimes>
+          <style.DetailAirports>
+            {flight.end_airport.airport_city}
+          </style.DetailAirports>
         </style.DetailTime>
       </style.DetailFlightTimeBox>
       {/* 가격 & 선택하기 */}
       <style.DetailPriceSelectBox>
-        <style.DetailPrices>₩ 1,320,000</style.DetailPrices>
+        <style.DetailPrices>₩ {flight.price}</style.DetailPrices>
         <div>
-          <Button type="primary" size={"large"} onClick={openModal}>
+          <Button type='primary' size={'large'} onClick={openModal}>
             선택하기
           </Button>
           <Modal isOpen={isModalOpen} closeModal={closeModal} />
