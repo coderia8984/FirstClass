@@ -6,13 +6,13 @@ import { Button } from 'antd';
 function Modal({ isOpen, closeModal, flight }) {
   return (
     <div style={{ display: isOpen ? 'block' : 'none' }}>
-      <style.DetailButtonModal>
-        <span>공항</span>
-        <span>시간</span>
-        <Button type='primary' size={'large'} onClick={closeModal}>
-          닫기
-        </Button>
-      </style.DetailButtonModal>
+      <style.ModalContainer>
+        <style.DetailButtonModal>
+          <Button type='primary' size={'large'} onClick={closeModal}>
+            닫기
+          </Button>
+        </style.DetailButtonModal>
+      </style.ModalContainer>
     </div>
   );
 }
