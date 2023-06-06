@@ -27,6 +27,10 @@ function Detail() {
 
   // 정렬 조건 state
   const [sortBy, setSortBy] = useState({ field: "price", by: "asc" });
+  searchCondition = {
+    ...searchCondition,
+    ...sortBy,
+  };
 
   // 정렬조건 select box 핸들러
   const sortByChange = (value) => {
@@ -62,22 +66,20 @@ function Detail() {
 
     setSortBy(newSortBy);
 
-    // searchCondition = {
-    //   ...searchCondition,
-    //   ...sortBy,
-    // };
-    // console.log(searchCondition)
+    searchCondition = {
+      ...searchCondition,
+      ...sortBy,
+    };
+    console.log(searchCondition)
   };
 
   // 항공편 받아오기
-  const { data, isLoading, error } = useQuery(["flights"], () => {
-    AirportAPI.getFlights(searchCondition);
-  });
+  let { data, isLoading, error } = useQuery(["flights", sortBy], () => AirportAPI.getFlights(searchCondition));
   if (isLoading || error) {
     return <></>;
   }
-  console.log(data);
-  // const flightData = data.data.data;
+  // console.log(data);
+  const flightData = data.data.data;
   // console.log(flightData);
 
   // 날짜 onChange 적용 함수
@@ -138,9 +140,9 @@ function Detail() {
         />
       </style.DetailInputBox>
       <style.DetailFlightContainer>
-        {/* {flightData.map((flight) => {
+        {flightData.map((flight) => {
           return <DetailFlight flight={flight}></DetailFlight>;
-        })} */}
+        })}
 
         {/* <DetailFlight></DetailFlight> */}
       </style.DetailFlightContainer>
