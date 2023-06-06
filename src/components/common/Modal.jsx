@@ -3,7 +3,7 @@ import * as style from '../../styles/style';
 
 import { Button, DatePicker } from 'antd';
 
-function Modal({ isOpen, closeModal }) {
+function Modal({ isOpen, closeModal, flight }) {
   return (
     <div style={{ display: isOpen ? 'block' : 'none' }}>
       <style.DetailButtonModal>

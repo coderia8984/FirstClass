@@ -97,10 +97,10 @@ function Detail() {
         />
       </style.DetailInputBox>
       <style.DetailFlightContainer>
-        {flightData.map((flight)=>{
-          return <DetailFlight flight={flight}></DetailFlight>
+        {flightData.map((flight) => {
+          return <DetailFlight flight={flight}></DetailFlight>;
         })}
-        
+
         {/* <DetailFlight></DetailFlight> */}
       </style.DetailFlightContainer>
     </>
