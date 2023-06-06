@@ -23,7 +23,7 @@ function Detail() {
   // 검색 조건 받아오기
   const { search } = useLocation();
   const searchCondition = queryString.parse(search);
-  console.log(searchCondition);
+  // console.log(searchCondition);
 
   // 항공편 받아오기
   const { data, isLoading, error } = useQuery(['flights'], () =>
@@ -32,7 +32,8 @@ function Detail() {
   if (isLoading || error) {
     return <></>;
   }
-  console.log(data);
+  const flightData = data.data.data;
+  console.log(flightData);
 
   // 날짜 onChange 적용 함수
   const onChangeDate = (...rest) => {
@@ -96,8 +97,11 @@ function Detail() {
         />
       </style.DetailInputBox>
       <style.DetailFlightContainer>
-        <DetailFlight></DetailFlight>
-        <DetailFlight></DetailFlight>
+        {flightData.map((flight)=>{
+          return <DetailFlight flight={flight}></DetailFlight>
+        })}
+        
+        {/* <DetailFlight></DetailFlight> */}
       </style.DetailFlightContainer>
     </>
   );

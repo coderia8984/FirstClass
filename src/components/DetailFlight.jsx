@@ -1,10 +1,11 @@
-import React from 'react';
-import * as style from '../styles/style';
-import { Button, DatePicker } from 'antd';
-import { useState } from 'react';
-import Modal from './common/Modal';
+import React from "react";
+import * as style from "../styles/style";
+import { Button, DatePicker } from "antd";
+import { useState } from "react";
+import Modal from "./common/Modal";
 
-function DetailFlight() {
+function DetailFlight({ flight }) {
+  console.log(flight)
   // 상세페이지 모달창
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -16,7 +17,7 @@ function DetailFlight() {
       {/* 시간 */}
       <style.DetailFlightTimeBox>
         <style.DetailTime>
-          <style.DetailTimes>오전 10:05</style.DetailTimes>
+          <style.DetailTimes>{flight.start_datetime.substring(11,16)}</style.DetailTimes>
           <style.DetailAirports>ICN</style.DetailAirports>
         </style.DetailTime>
         <style.DetailTravelTime>
@@ -32,7 +33,7 @@ function DetailFlight() {
       <style.DetailPriceSelectBox>
         <style.DetailPrices>₩ 1,320,000</style.DetailPrices>
         <div>
-          <Button type='primary' size={'large'} onClick={openModal}>
+          <Button type="primary" size={"large"} onClick={openModal}>
             선택하기
           </Button>
           <Modal isOpen={isModalOpen} closeModal={closeModal} />
