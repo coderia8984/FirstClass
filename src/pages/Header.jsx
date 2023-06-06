@@ -44,7 +44,6 @@ function Header() {
             cursor="pointer"
             onClick={navigateToMain}
           />
-          {/* 로그인 유무에 따라 로그인 버튼 변경 (수정 필요) */}
           <style.LoginOutBtn onClick={onClickHandler}>
             {isLogged ? (
               "로그아웃"
