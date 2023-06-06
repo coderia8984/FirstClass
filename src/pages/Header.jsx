@@ -15,11 +15,6 @@ function Header() {
     setIsLogged(!!sessionStorage.getItem("RefreshToken"));
   }, [sessionStorage.getItem("RefreshToken")]);
 
-  // let isLogged = false;
-  // if (!!sessionStorage.getItem('RefreshToken')) {
-  //   isLogged = true;
-  // }
-
   // 로고 클릭 이벤트 메인 페이지 이동
   const navigate = useNavigate();
   const navigateToMain = () => {

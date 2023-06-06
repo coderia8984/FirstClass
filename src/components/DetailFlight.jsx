@@ -5,7 +5,7 @@ import { useState } from "react";
 import Modal from "./common/Modal";
 
 function DetailFlight({ flight }) {
-  console.log(flight)
+  // console.log(flight)
   // 상세페이지 모달창
   const [isModalOpen, setIsModalOpen] = useState(false);
 

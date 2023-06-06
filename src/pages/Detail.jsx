@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
-import { useRecoilValue } from 'recoil';
-import { Button, DatePicker } from 'antd';
-import { Select, Space } from 'antd';
-import { useQuery } from 'react-query';
-import { useLocation, useNavigate } from 'react-router-dom';
-import queryString from 'query-string';
+import React, { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { Button, DatePicker } from "antd";
+import { Select, Space } from "antd";
+import { useQuery } from "react-query";
+import { useLocation, useNavigate } from "react-router-dom";
+import queryString from "query-string";
 
-import * as style from '../styles/style';
-import DetailFlight from '../components/DetailFlight';
-import { AirportAPI } from '../axios/api';
+import * as style from "../styles/style";
+import DetailFlight from "../components/DetailFlight";
+import { AirportAPI } from "../axios/api";
 
 function Detail() {
   const navigate = useNavigate();
@@ -22,27 +22,67 @@ function Detail() {
 
   // 검색 조건 받아오기
   const { search } = useLocation();
-  const searchCondition = queryString.parse(search);
+  let searchCondition = queryString.parse(search);
   // console.log(searchCondition);
 
+  // 정렬 조건 state
+  const [sortBy, setSortBy] = useState({ field: "price", by: "asc" });
+
+  // 정렬조건 select box 핸들러
+  const sortByChange = (value) => {
+    let newSortBy = {
+      ...sortBy,
+    };
+
+    // value가 1, 2이면 시간, 3, 4이면 가격
+    if (value > 2) {
+      newSortBy = {
+        ...newSortBy,
+        field: "price",
+      };
+    } else {
+      newSortBy = {
+        ...newSortBy,
+        field: "start",
+      };
+    }
+
+    // value가 1, 3이면 오름차순, 2, 4이면 내림차순
+    if (value % 2 === 0) {
+      newSortBy = {
+        ...newSortBy,
+        by: "desc",
+      };
+    } else {
+      newSortBy = {
+        ...newSortBy,
+        by: "asc",
+      };
+    }
+
+    setSortBy(newSortBy);
+
+    // searchCondition = {
+    //   ...searchCondition,
+    //   ...sortBy,
+    // };
+    // console.log(searchCondition)
+  };
+
   // 항공편 받아오기
-  const { data, isLoading, error } = useQuery(['flights'], () =>
-    AirportAPI.getFlights(searchCondition)
-  );
+  const { data, isLoading, error } = useQuery(["flights"], () => {
+    AirportAPI.getFlights(searchCondition);
+  });
   if (isLoading || error) {
     return <></>;
   }
-  const flightData = data.data.data;
-  console.log(flightData);
+  console.log(data);
+  // const flightData = data.data.data;
+  // console.log(flightData);
 
   // 날짜 onChange 적용 함수
   const onChangeDate = (...rest) => {
-    const date = rest[1].replace(/-/g, '');
-  };
-
-  // Input 박스
-  const handleChange = (value) => {
-    console.log(`selected ${value}`);
+    const date = rest[1].replace(/-/g, "");
   };
 
   return (
@@ -65,42 +105,43 @@ function Detail() {
             </style.DetailNumClass>
           </style.DetailUserBox>
           <style.DetailDateBox>
-            <DatePicker placeholder='떠나는 날짜' onChange={onChangeDate} />
+            <DatePicker placeholder="떠나는 날짜" onChange={onChangeDate} />
           </style.DetailDateBox>
         </style.DetailHeader>
       </style.DetailHeaderContainer>
+      {/* 상세페이지 body */}
       <style.DetailInputBox>
         <Select
-          defaultValue='검색조건'
+          defaultValue="검색조건"
           style={{
             width: 120,
           }}
-          onChange={handleChange}
+          onChange={sortByChange}
           options={[
             {
-              value: '1',
-              label: '빠른시간',
+              value: 1,
+              label: "빠른시간",
             },
             {
-              value: '2',
-              label: '늦은시간',
+              value: 2,
+              label: "늦은시간",
             },
             {
-              value: '3',
-              label: '최저가',
+              value: 3,
+              label: "최저가",
             },
             {
-              value: '4',
-              label: '최고가',
+              value: 4,
+              label: "최고가",
             },
           ]}
         />
       </style.DetailInputBox>
       <style.DetailFlightContainer>
-        {flightData.map((flight)=>{
-          return <DetailFlight flight={flight}></DetailFlight>
-        })}
-        
+        {/* {flightData.map((flight) => {
+          return <DetailFlight flight={flight}></DetailFlight>;
+        })} */}
+
         {/* <DetailFlight></DetailFlight> */}
       </style.DetailFlightContainer>
     </>
