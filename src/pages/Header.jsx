@@ -45,7 +45,7 @@ function Header() {
             {isLogged ? (
               "로그아웃"
             ) : (
-              <a href={process.env.REACT_APP_SERVER_URL + "/auth/kakao"}>
+              <a href={"http://52.79.197.128/auth/kakao"}>
                 로그인
               </a>
             )}
