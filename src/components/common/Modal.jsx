@@ -2,14 +2,32 @@ import React from 'react';
 import * as style from '../../styles/style';
 
 import { Button } from 'antd';
-
+import { useMutation, useQueryClient } from 'react-query';
 import { useLocation, useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
+import { AirportAPI } from '../../axios/api';
 
 function Modal({ isOpen, closeModal, flight }) {
   // 검색 조건 받아오기
   const { search } = useLocation();
   let searchCondition = queryString.parse(search);
+
+  // 항공정보 예약 db로 데이터 보내기
+  // 성공시 alert
+  // 실패시 alert
+
+  const mutation = useMutation(AirportAPI.postAirport, {
+    onSuccess: (response) => {
+      alert('예약 완료됐습니다!');
+    },
+    onError: () => alert('예약 실패!'),
+  });
+
+  const useReservationBtn = () => {
+    const newReservation = {};
+    mutation.mutate(newReservation);
+  };
+
   return (
     <div style={{ display: isOpen ? 'block' : 'none' }}>
       <style.ModalContainer>
@@ -40,6 +58,7 @@ function Modal({ isOpen, closeModal, flight }) {
           <Button
             type='primary'
             size={'large'}
+            onClick={useReservationBtn}
             style={{
               margin: '10px',
             }}

@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
-import { Button, DatePicker, Select, Modal } from "antd";
-import { useQuery } from "react-query";
-import { useLocation, useNavigate } from "react-router-dom";
-import queryString from "query-string";
-import { WechatOutlined } from "@ant-design/icons";
+import React, { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { Button, DatePicker, Select, Modal } from 'antd';
+import { useQuery } from 'react-query';
+import { useLocation, useNavigate } from 'react-router-dom';
+import queryString from 'query-string';
+import { WechatOutlined } from '@ant-design/icons';
 
-import * as style from "../styles/style";
-import DetailFlight from "../components/DetailFlight";
-import { AirportAPI } from "../axios/api";
-import ChatModal from "../components/ChatModal";
+import * as style from '../styles/style';
+import DetailFlight from '../components/DetailFlight';
+import { AirportAPI } from '../axios/api';
+import ChatModal from '../components/ChatModal';
 
 function Detail() {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ function Detail() {
   // console.log(searchCondition);
 
   // 정렬 조건 state
-  const [sortBy, setSortBy] = useState({ field: "price", by: "asc" });
+  const [sortBy, setSortBy] = useState({ field: 'price', by: 'asc' });
   searchCondition = {
     ...searchCondition,
     ...sortBy,
@@ -43,12 +43,12 @@ function Detail() {
     if (value > 2) {
       newSortBy = {
         ...newSortBy,
-        field: "price",
+        field: 'price',
       };
     } else {
       newSortBy = {
         ...newSortBy,
-        field: "start",
+        field: 'start',
       };
     }
 
@@ -56,12 +56,12 @@ function Detail() {
     if (value % 2 === 0) {
       newSortBy = {
         ...newSortBy,
-        by: "desc",
+        by: 'desc',
       };
     } else {
       newSortBy = {
         ...newSortBy,
-        by: "asc",
+        by: 'asc',
       };
     }
 
@@ -88,17 +88,18 @@ function Detail() {
   };
 
   // 항공편 받아오기
-  let { data, isLoading, error } = useQuery(["flights", sortBy], () =>
+  let { data, isLoading, error } = useQuery(['flights', sortBy], () =>
     AirportAPI.getFlights(searchCondition)
   );
   if (isLoading || error) {
     return <></>;
   }
   const flightData = data.data.data;
+  console.log(flightData);
 
   // 날짜 onChange 적용 함수
   const onChangeDate = (...rest) => {
-    const date = rest[1].replace(/-/g, "");
+    const date = rest[1].replace(/-/g, '');
   };
 
   return (
@@ -121,23 +122,28 @@ function Detail() {
             </style.DetailNumClass>
           </style.DetailUserBox>
           <style.DetailDateBox>
-            <DatePicker placeholder="떠나는 날짜" onChange={onChangeDate} />
+            <DatePicker placeholder='떠나는 날짜' onChange={onChangeDate} />
           </style.DetailDateBox>
         </style.DetailHeader>
       </style.DetailHeaderContainer>
       {/* 상세페이지 body */}
       <style.DetailInputBox>
         <Button
-          type="primary"
+          type='primary'
           icon={<WechatOutlined />}
-          style={{ backgroundColor: "skyblue" }}
+          style={{ backgroundColor: 'skyblue' }}
           onClick={showModal}
         >
           채팅창 연결
         </Button>
-        <ChatModal title="전체 채팅방" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} />
+        <ChatModal
+          title='전체 채팅방'
+          open={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+        />
         <Select
-          defaultValue="검색조건"
+          defaultValue='검색조건'
           style={{
             width: 120,
           }}
@@ -145,26 +151,28 @@ function Detail() {
           options={[
             {
               value: 1,
-              label: "빠른시간",
+              label: '빠른시간',
             },
             {
               value: 2,
-              label: "늦은시간",
+              label: '늦은시간',
             },
             {
               value: 3,
-              label: "최저가",
+              label: '최저가',
             },
             {
               value: 4,
-              label: "최고가",
+              label: '최고가',
             },
           ]}
         />
       </style.DetailInputBox>
       <style.DetailFlightContainer>
         {flightData.map((flight) => {
-          return <DetailFlight flight={flight}></DetailFlight>;
+          return (
+            <DetailFlight key={flight.flight_id} flight={flight}></DetailFlight>
+          );
         })}
 
         {/* <DetailFlight></DetailFlight> */}
