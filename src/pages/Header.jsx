@@ -23,10 +23,12 @@ function Header() {
 
   // 로그아웃
   const onClickHandler = () => {
-    sessionStorage.clear();
+    if (isLogged) {
+      sessionStorage.clear();
 
-    alert('로그아웃이 완료되었습니다.')
-    navigate("/");
+      alert("로그아웃이 완료되었습니다.");
+      navigate("/");
+    }
   };
 
   return (

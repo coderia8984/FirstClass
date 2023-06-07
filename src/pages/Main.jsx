@@ -10,6 +10,7 @@ import "../styles/antdStyle.css";
 import { AirportAPI } from "../axios/api";
 
 function Main() {
+  // console.log(process.env.REACT_APP_SERVER_URL.split('/')[2])
   // token 받아오기
   const { search } = useLocation();
   const token = queryString.parse(search);

@@ -1,16 +1,18 @@
-import React from 'react';
-import * as style from '../../styles/style';
+import React from "react";
+import * as style from "../../styles/style";
 
-import { Button } from 'antd';
-import { useMutation, useQueryClient } from 'react-query';
-import { useLocation, useNavigate } from 'react-router-dom';
-import queryString from 'query-string';
-import { AirportAPI } from '../../axios/api';
+import { Button } from "antd";
+import { useMutation, useQueryClient } from "react-query";
+import { useLocation, useNavigate } from "react-router-dom";
+import queryString from "query-string";
+import { AirportAPI } from "../../axios/api";
 
 function Modal({ isOpen, closeModal, flight }) {
+  const navigate = useNavigate();
   // 검색 조건 받아오기
   const { search } = useLocation();
   let searchCondition = queryString.parse(search);
+  // console.log(flight.flight_id, searchCondition.people_num)
 
   // 항공정보 예약 db로 데이터 보내기
   // 성공시 alert
@@ -18,18 +20,23 @@ function Modal({ isOpen, closeModal, flight }) {
 
   const mutation = useMutation(AirportAPI.postAirport, {
     onSuccess: (response) => {
-      alert('예약 완료됐습니다!');
+      alert("예약 완료됐습니다!");
+      navigate("/");
     },
-    onError: () => alert('예약 실패!'),
+    onError: () => alert("예약 실패!"),
   });
 
   const useReservationBtn = () => {
-    const newReservation = {};
+    const newReservation = {
+      flight_id: flight.flight_id,
+      people_num: Number(searchCondition.people_num),
+    };
+    console.log(newReservation)
     mutation.mutate(newReservation);
   };
 
   return (
-    <div style={{ display: isOpen ? 'block' : 'none' }}>
+    <div style={{ display: isOpen ? "block" : "none" }}>
       <style.ModalContainer>
         <style.ModalListBox>
           <style.ModalDetail>
@@ -56,16 +63,16 @@ function Modal({ isOpen, closeModal, flight }) {
 
         <style.DetailButtonModal>
           <Button
-            type='primary'
-            size={'large'}
+            type="primary"
+            size={"large"}
             onClick={useReservationBtn}
             style={{
-              margin: '10px',
+              margin: "10px",
             }}
           >
             예약하기
           </Button>
-          <Button type='primary' size={'large'} onClick={closeModal}>
+          <Button type="primary" size={"large"} onClick={closeModal}>
             닫기
           </Button>
         </style.DetailButtonModal>

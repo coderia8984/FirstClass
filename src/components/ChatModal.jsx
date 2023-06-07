@@ -3,7 +3,7 @@ import * as style from "../styles/style";
 import { Button, Modal, List, Input, Space } from "antd";
 import { io } from "socket.io-client";
 
-const socket = io("ws://52.79.197.128", {
+const socket = io(`ws://${process.env.REACT_APP_SERVER_URL.split('/')[2]}`, {
   transports: ["websocket"],
   withCredentials: true,
 });

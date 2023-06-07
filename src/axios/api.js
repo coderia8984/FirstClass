@@ -12,7 +12,7 @@ instance.interceptors.request.use(
   function (config) {
     if (!!sessionStorage.getItem('RefreshToken')) {
       const refreshToken = sessionStorage.getItem('RefreshToken');
-      config.headers.RefreshToken = `Bearer ${refreshToken}`;
+      config.headers.Refreshtoken = `Bearer ${refreshToken}`;
     }
 
     return config;
