@@ -15,9 +15,9 @@ function Detail() {
   const navigate = useNavigate();
   // token이 없으면 메인 화면으로 돌아가기
   useEffect(() => {
-    if (!sessionStorage.getItem('RefreshToken')) {
-      alert('로그인이 필요합니다.');
-      navigate('/');
+    if (!sessionStorage.getItem("RefreshToken")) {
+      alert("로그인이 필요합니다.");
+      navigate("/");
     }
   }, []);
 
@@ -75,11 +75,12 @@ function Detail() {
   };
 
   // 날짜 onChange 적용 함수
-
+  const [dataChange, setDataChange] = useState();
   const onChangeDate = (...rest) => {
     const date = rest[1].replace(/-/g, "");
+    setDataChange(dataChange);
 
-    const query = `sairport=${searchCondition.sairport}&s_id=${searchCondition.s_id}&s_code=${searchCondition.s_code}&eairport=${searchCondition.eairport}&e_id=${searchCondition.e_id}&e_code=${searchCondition.arrivalCode}&start_datetime=${date}&people_num=${searchCondition.people_num}`;
+    const query = `sairport=${searchCondition.sairport}&s_id=${searchCondition.s_id}&s_code=${searchCondition.s_code}&eairport=${searchCondition.eairport}&e_id=${searchCondition.e_id}&e_code=${searchCondition.e_code}&start_datetime=${date}&people_num=${searchCondition.people_num}`;
     navigate(`/detail?${query}`);
   };
 
@@ -97,7 +98,7 @@ function Detail() {
   };
 
   // 항공편 받아오기
-  let { data, isLoading, error } = useQuery(["flights", sortBy], () =>
+  let { data, isLoading, error } = useQuery(["flights", sortBy, dataChange], () =>
     AirportAPI.getFlights(searchCondition)
   );
   if (isLoading || error) {
