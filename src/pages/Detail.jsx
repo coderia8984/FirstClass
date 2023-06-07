@@ -13,13 +13,13 @@ import ChatModal from "../components/ChatModal";
 
 function Detail() {
   const navigate = useNavigate();
-  // // token이 없으면 메인 화면으로 돌아가기
-  // useEffect(() => {
-  //   if (!sessionStorage.getItem('RefreshToken')) {
-  //     alert('로그인이 필요합니다.');
-  //     navigate('/');
-  //   }
-  // }, []);
+  // token이 없으면 메인 화면으로 돌아가기
+  useEffect(() => {
+    if (!sessionStorage.getItem('RefreshToken')) {
+      alert('로그인이 필요합니다.');
+      navigate('/');
+    }
+  }, []);
 
   // 검색 조건 받아오기
   const { search } = useLocation();
